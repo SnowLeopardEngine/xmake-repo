@@ -6,6 +6,10 @@ package("scoral")
 
 	add_includedirs("include")
     add_linkdirs("lib")
+
+    if is_plat("windows") then
+        add_syslinks("Shell32", "Ole32")
+    end
 	
     add_links("CoralNative")
 
