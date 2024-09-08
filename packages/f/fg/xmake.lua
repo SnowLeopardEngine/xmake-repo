@@ -11,6 +11,7 @@ package("fg")
 
     on_install(function (package)
         local configs = {}
+        io.replace("src/GraphvizWriter.cpp", "#if __cplusplus >= 202002L", "#if HAS_STD_FMT")
         os.cp(path.join(package:scriptdir(), "port", "xmake.lua"), "xmake.lua")
         import("package.tools.xmake").install(package, configs)
     end)
